@@ -1,0 +1,308 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * VedaKits — Astro & Wellness design system
+ * Deep maroon, warm gold, cream backgrounds, traditional Indian festive feel.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-foreground: var(--gold-foreground);
+  --color-saffron: var(--saffron);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+
+  --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --font-devanagari: "Tiro Devanagari Marathi", "Noto Serif Devanagari", serif;
+
+  --shadow-soft: 0 8px 24px -8px color-mix(in oklab, var(--primary) 18%, transparent);
+  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--primary) 35%, transparent);
+  --shadow-gold: 0 12px 40px -12px color-mix(in oklab, var(--gold) 45%, transparent);
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-festive: linear-gradient(135deg, oklch(0.32 0.09 150), oklch(0.42 0.10 145));
+  --gradient-header: linear-gradient(135deg, oklch(0.97 0.012 90), oklch(0.95 0.018 95));
+  --gradient-gold: linear-gradient(135deg, oklch(0.78 0.13 78), oklch(0.66 0.14 65));
+  --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== VedaKits umbrella brand — Forest Green, Cream & Brass ===== */
+:root {
+  --radius: 0.75rem;
+
+  --background: oklch(0.955 0.022 95);             /* warm cream (matches logo bg) */
+  --foreground: oklch(0.26 0.05 150);              /* deep forest ink */
+
+  --card: oklch(0.985 0.012 95);
+  --card-foreground: oklch(0.26 0.05 150);
+  --popover: oklch(0.985 0.012 95);
+  --popover-foreground: oklch(0.26 0.05 150);
+
+  /* Deep forest green — primary brand (matches logo leaves) */
+  --primary: oklch(0.40 0.10 150);
+  --primary-foreground: oklch(0.97 0.018 95);
+  --primary-glow: oklch(0.52 0.12 148);
+
+  --secondary: oklch(0.92 0.025 95);
+  --secondary-foreground: oklch(0.30 0.07 150);
+
+  --muted: oklch(0.93 0.020 95);
+  --muted-foreground: oklch(0.42 0.04 150);
+
+  /* Warm brass accent */
+  --accent: oklch(0.72 0.11 75);
+  --accent-foreground: oklch(0.24 0.05 60);
+
+  --gold: oklch(0.66 0.11 78);
+  --gold-foreground: oklch(0.22 0.04 60);
+
+  --saffron: oklch(0.72 0.16 60);
+  --cream: oklch(0.955 0.022 95);
+
+  --destructive: oklch(0.55 0.20 27);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.86 0.025 95);
+  --input: oklch(0.91 0.022 95);
+  --ring: oklch(0.40 0.10 150);
+}
+
+
+.dark {
+  --background: oklch(0.16 0.02 250);
+  --foreground: oklch(0.96 0.013 90);
+  --card: oklch(0.20 0.025 250);
+  --card-foreground: oklch(0.96 0.013 90);
+  --popover: oklch(0.20 0.025 250);
+  --popover-foreground: oklch(0.96 0.013 90);
+  --primary: oklch(0.72 0.13 75);
+  --primary-foreground: oklch(0.16 0.02 250);
+  --primary-glow: oklch(0.80 0.14 75);
+  --secondary: oklch(0.26 0.03 250);
+  --secondary-foreground: oklch(0.96 0.013 90);
+  --muted: oklch(0.26 0.03 250);
+  --muted-foreground: oklch(0.72 0.02 250);
+  --accent: oklch(0.74 0.13 75);
+  --accent-foreground: oklch(0.16 0.02 250);
+  --gold: oklch(0.74 0.13 75);
+  --gold-foreground: oklch(0.16 0.02 250);
+  --saffron: oklch(0.72 0.16 60);
+  --cream: oklch(0.95 0.013 90);
+  --destructive: oklch(0.65 0.22 27);
+  --destructive-foreground: oklch(0.98 0 0);
+  --border: oklch(0.30 0.03 250);
+  --input: oklch(0.28 0.03 250);
+  --ring: oklch(0.72 0.13 75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+/* ───── Devotional ornaments ───── */
+.divider-om::before,
+.divider-om::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+.divider-om {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--gold);
+}
+
+/* ───── Animations ───── */
+@keyframes fall {
+  0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.9; }
+  100% { transform: translateY(110vh) translateX(40px) rotate(360deg); opacity: 0; }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--gold) 40%, transparent); }
+  50% { box-shadow: 0 0 0 14px color-mix(in oklab, var(--gold) 0%, transparent); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-float-slow { animation: float-slow 4s ease-in-out infinite; }
+.animate-glow-pulse { animation: glow-pulse 2.4s ease-out infinite; }
+
+.text-shimmer {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 50%, var(--primary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+.bg-festive { background-image: var(--gradient-festive); }
+.bg-header { background-image: var(--gradient-header); }
+.bg-gold-grad { background-image: var(--gradient-gold); }
+
+.shadow-soft { box-shadow: var(--shadow-soft); }
+.shadow-elegant { box-shadow: var(--shadow-elegant); }
+.shadow-gold { box-shadow: var(--shadow-gold); }
+
+.transition-smooth { transition: var(--transition-smooth); }
+
+/* Card hover */
+.product-card {
+  transition: var(--transition-smooth);
+}
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-elegant);
+}
+.product-card img { transition: transform 0.6s ease; }
+.product-card:hover img { transform: scale(1.05); }
+
+/* ──────────────────────────────────────────────────────────────────
+ * Scoped section themes — only apply inside .theme-* wrappers.
+ * Global tokens, header, footer, cart, checkout and /admin stay
+ * untouched.
+ * ────────────────────────────────────────────────────────────────── */
+
+/* Astro Veda — light ivory + soft slate-blue + muted gold, serif headings */
+.theme-astro {
+  --background: oklch(0.985 0.006 85);             /* near-white ivory */
+  --foreground: oklch(0.30 0.04 255);              /* soft slate ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.30 0.04 255);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.30 0.04 255);
+
+  /* Soft slate-blue — refined, not heavy */
+  --primary: oklch(0.46 0.06 255);
+  --primary-foreground: oklch(0.985 0.006 85);
+  --primary-glow: oklch(0.62 0.07 255);
+
+  --secondary: oklch(0.96 0.012 85);
+  --secondary-foreground: oklch(0.36 0.05 255);
+  --muted: oklch(0.955 0.01 85);
+  --muted-foreground: oklch(0.48 0.03 255);
+  --accent: oklch(0.78 0.09 82);                   /* muted champagne gold */
+  --accent-foreground: oklch(0.30 0.04 255);
+
+  --gold: oklch(0.72 0.09 80);                     /* antique gold, not flashy */
+  --gold-foreground: oklch(0.30 0.04 255);
+  --cream: oklch(0.985 0.006 85);
+
+  --border: oklch(0.91 0.012 85);
+  --input: oklch(0.95 0.01 85);
+  --ring: oklch(0.62 0.07 255);
+
+  /* Light, airy hero gradient — ivory into pale blue */
+  --gradient-festive: linear-gradient(135deg, oklch(0.97 0.012 90), oklch(0.93 0.025 250));
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.08 82), oklch(0.72 0.09 78));
+
+  --font-display: "Cormorant Garamond", "Fraunces", Georgia, serif;
+}
+/* Make the Astro hero readable on the new light gradient */
+.theme-astro .bg-festive { color: var(--foreground); }
+.theme-astro .bg-festive .text-cream,
+.theme-astro .bg-festive .text-cream\/80,
+.theme-astro .bg-festive .text-cream\/85 { color: var(--foreground); }
+.theme-astro .text-gold { color: oklch(0.55 0.09 78); }
+.theme-astro h1, .theme-astro h2, .theme-astro h3, .theme-astro h4,
+.theme-astro .font-display {
+  font-family: "Cormorant Garamond", "Fraunces", Georgia, serif;
+  letter-spacing: -0.015em;
+}
+
+/* Wellness Veda — sage + soft terracotta + off-white, clean sans */
+.theme-wellness {
+  --background: oklch(0.975 0.012 90);             /* off-white */
+  --foreground: oklch(0.28 0.04 145);              /* deep sage ink */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.28 0.04 145);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.28 0.04 145);
+
+  /* Sage green */
+  --primary: oklch(0.55 0.06 145);
+  --primary-foreground: oklch(0.97 0.015 90);
+  --primary-glow: oklch(0.65 0.08 145);
+
+  --secondary: oklch(0.94 0.02 100);
+  --secondary-foreground: oklch(0.32 0.05 145);
+  --muted: oklch(0.95 0.015 100);
+  --muted-foreground: oklch(0.45 0.03 145);
+
+  /* Soft terracotta accent */
+  --accent: oklch(0.70 0.11 45);
+  --accent-foreground: oklch(0.97 0.015 90);
+
+  /* Re-purpose gold token as terracotta inside this scope */
+  --gold: oklch(0.70 0.11 45);
+  --gold-foreground: oklch(0.97 0.015 90);
+  --cream: oklch(0.975 0.012 90);
+
+  --border: oklch(0.88 0.02 100);
+  --input: oklch(0.92 0.018 100);
+  --ring: oklch(0.55 0.06 145);
+
+  --gradient-festive: linear-gradient(135deg, oklch(0.62 0.07 145), oklch(0.72 0.10 50));
+  --gradient-gold: linear-gradient(135deg, oklch(0.72 0.11 45), oklch(0.62 0.10 40));
+
+  --font-display: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+  font-family: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+}
+.theme-wellness h1, .theme-wellness h2, .theme-wellness h3, .theme-wellness h4,
+.theme-wellness .font-display {
+  font-family: "Inter", "Plus Jakarta Sans", system-ui, sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
