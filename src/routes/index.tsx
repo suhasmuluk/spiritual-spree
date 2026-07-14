@@ -7,7 +7,7 @@ export const Route = createFileRoute("/")({
       { title: "VedaKits — Sacred Astro & Pure Wellness Kits" },
       { name: "description", content: "VedaKits brings together two worlds — Astro Veda (Vastu & Pooja kits) and Wellness Veda (bath, skin & superfoods). Authentic, eco-friendly, made with care." },
       { property: "og:title", content: "VedaKits — Sacred Astro & Pure Wellness Kits" },
-      { property: "og:description", content: "Two collections, one promise. Astro Veda for sacred rituals, Wellness Veda for everyday self-care." },
+      { property: "og:description", content: "VedaKits brings together two worlds — Astro Veda (Vastu & Pooja kits) and Wellness Veda (bath, skin & superfoods). Authentic, eco-friendly, made with care." },
       { property: "og:url", content: "/" },
     ],
     links: [{ rel: "canonical", href: "/" }],
