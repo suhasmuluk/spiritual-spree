@@ -20,6 +20,9 @@ export function ProductCard({ product }: { product: Product }) {
           loading="lazy"
           width={800}
           height={800}
+          onError={(event) => {
+            event.currentTarget.src = "/placeholder.svg";
+          }}
           className="w-full h-full object-cover"
         />
         {product.eco_friendly && (
