@@ -21,7 +21,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const checkRole = async (uid: string | undefined) => {
     if (!uid) { setIsAdmin(false); return; }
-    const { data } = await supabase.from("user_roles").select("role").eq("user_id", uid).eq("role", "admin").maybeSingle();
+    const { data, error } = await supabase.from("user_roles").select("role").eq("user_id", uid).eq("role", "admin").maybeSingle();
+    if (error) {
+      console.error("Failed to load user role", error);
+      setIsAdmin(false);
+      return;
+    }
     setIsAdmin(!!data);
   };
 
@@ -29,13 +34,24 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_e, s) => {
       setSession(s);
       setUser(s?.user ?? null);
-      setTimeout(() => { checkRole(s?.user?.id); }, 0);
+      setLoading(true);
+      setTimeout(() => {
+        checkRole(s?.user?.id).finally(() => setLoading(false));
+      }, 0);
     });
-    supabase.auth.getSession().then(({ data: { session: s } }) => {
-      setSession(s);
-      setUser(s?.user ?? null);
-      checkRole(s?.user?.id).finally(() => setLoading(false));
-    });
+    supabase.auth.getSession()
+      .then(({ data: { session: s } }) => {
+        setSession(s);
+        setUser(s?.user ?? null);
+        return checkRole(s?.user?.id);
+      })
+      .catch((error) => {
+        console.error("Failed to load auth session", error);
+        setSession(null);
+        setUser(null);
+        setIsAdmin(false);
+      })
+      .finally(() => setLoading(false));
     return () => subscription.unsubscribe();
   }, []);
 
